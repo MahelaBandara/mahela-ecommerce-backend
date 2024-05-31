@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 
 import com.mahela.config.JwtProvider;
 import com.mahela.exceptions.UserException;
@@ -42,6 +44,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/signup")
+	@CrossOrigin(origins = "https://mahela-e-commerce-full-stack.vercel.app")
 	public ResponseEntity<AuthResponse>createUserHandle(@RequestBody User user)throws UserException{
 		String email = user.getEmail();
 		String password = user.getPassword();
@@ -77,6 +80,7 @@ public class AuthController {
 	}
 	
 	@PostMapping("/signin")
+	@CrossOrigin(origins = "https://mahela-e-commerce-full-stack.vercel.app")
 	public  ResponseEntity<AuthResponse>loginUserHandler(@RequestBody LoginRequest loginRequest){
 		
 		String username = loginRequest.getEmail();
